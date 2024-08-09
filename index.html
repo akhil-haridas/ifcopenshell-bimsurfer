@@ -1,17 +1,41 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IfcOpenShell+BimSurfer</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-    <script src="/bimsurfer/lib/three.js"></script>
-    <script src="/bimsurfer/lib/OrbitControls.js"></script>
-    <script src="/bimsurfer/lib/GLTFLoader.js"></script>
-    <script src="/bimsurfer/lib/DRACOLoader.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IfcOpenShell+BimSurfer</title>
+  <script src="/bimsurfer/lib/three.js"></script>
+  <script src="/bimsurfer/lib/OrbitControls.js"></script>
+  <script src="/bimsurfer/lib/GLTFLoader.js"></script>
+  <script src="/bimsurfer/lib/DRACOLoader.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+  <script src="/bimsurfer/lib/require.js"></script>
+  <script>
+    require.config({
+      paths: {
+        'BimSurfer': '/bimsurfer/src/BimSurfer',
+        'EventHandler': '/bimsurfer/src/EventHandler',
+        'svgViewer': '/bimsurfer/src/svgViewer',
+        'threeViewer': '/bimsurfer/src/threeViewer',
+        'Utils': '/bimsurfer/src/Utils'
+      }
+    });
+
+    require(['BimSurfer'], function (BimSurfer) {
+      if (BimSurfer && typeof BimSurfer === 'function') {
+        window.BimSurfer = BimSurfer;
+        console.log('BimSurfer loaded and assigned to window.');
+      } else {
+        console.error('BimSurfer module could not be loaded.');
+      }
+    });
+  </script>
+</body>
+
 </html>
