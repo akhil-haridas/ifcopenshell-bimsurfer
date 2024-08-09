@@ -1,11 +1,12 @@
-import React from 'react'
-import './App.css'
+import React from "react";
+import "./App.css";
 
 function App() {
-
   return (
-    <h1>Hello World</h1>
-  )
+    <div id="viewerContainer" style={{ width: "100%", height: "100vh" }}>
+      Hello World
+    </div>
+  );
 }
 
-export default App
+export default App;
