@@ -142,6 +142,8 @@ define(["../EventHandler", "../Utils"], function(EventHandler, Utils) {
             draco.setDecoderPath(threePath.substr(0, threePath.lastIndexOf("/") + 1));
             loader.setDRACOLoader(draco);
             }            
+            console.log('SRC::',src)
+            console.log('SRC22::',src + (isIE11 ? ".unoptimized" : "") + ".glb")
             
             loader.load(src + (isIE11 ? ".unoptimized" : "") + ".glb", function(gltf) {
                     scene.add(gltf.scene);

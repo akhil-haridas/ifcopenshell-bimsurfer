@@ -11,6 +11,19 @@ function App() {
         const bimSurfer = new window.BimSurfer({
           domNode: "viewerContainer",
         });
+
+        bimSurfer
+          .load({
+            src: "/models/Duplex_A_20110907_optimized",
+            type: "gltf",
+          })
+          .then(() => {
+            console.log("Model loaded successfully.");
+          })
+          .catch((error) => {
+            console.error("Error loading model:", error);
+          });
+
         return () => {
           bimSurfer.destroy();
         };
