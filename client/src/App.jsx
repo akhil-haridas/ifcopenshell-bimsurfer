@@ -5,6 +5,7 @@ function App() {
   const [bimSurferLoaded, setBimSurferLoaded] = useState(false);
   const viewerRef = useRef(null);
 
+  console.log(window.BimSurfer)
   useEffect(() => {
     const initializeBimSurfer = () => {
       if (window.BimSurfer && viewerRef.current) {
@@ -14,8 +15,9 @@ function App() {
 
         bimSurfer
           .load({
-            src: "/models/Duplex_A_20110907_optimized",
-            type: "gltf",
+            src: "/models/Duplex",
+            // src: "/models/SampleGLB",
+            // type: "gltf",
           })
           .then(() => {
             console.log("Model loaded successfully.");
